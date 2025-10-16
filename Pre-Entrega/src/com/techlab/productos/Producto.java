@@ -5,12 +5,19 @@ public abstract class Producto {
     private double precio;
     private String tipoRecipiente = "Taza";
     private int cantidad;
+    private int id;
+    private static int contador=1;
 
     public Producto(String nom, double prec, int cant){
-
+        this.id = contador;
         this.nombre = nom;
         this.precio = prec;
         this.cantidad = cant;
+        contador++;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getNombre() {
@@ -19,6 +26,14 @@ public abstract class Producto {
 
     public double getPrecio() {
         return precio;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
     }
 
     public int getCantidad() {
@@ -38,6 +53,11 @@ public abstract class Producto {
     @Override
     public String toString() {
 
-        return "Producto: "+this.nombre+", Precio: $"+this.precio+", Cantidad: "+this.cantidad;
+        return "ID: "+this.id+", Producto: "+this.nombre+", Precio: $"+this.precio+", Cantidad: "+this.cantidad;
+    }
+
+    // Verifica si el id buscado es el del objeto
+    public boolean coincideId(int id) {
+        return this.id == id;
     }
 }
